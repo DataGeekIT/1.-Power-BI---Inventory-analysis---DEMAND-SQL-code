@@ -1,4 +1,4 @@
-# 1.-Power-BI---Inventory-analysis---DEMAND-SQL-code
+# Power-BI-Inventory-analysis-DEMAND-SQL-code
 
 
 This SQL code selects information about planned orders from the database. 

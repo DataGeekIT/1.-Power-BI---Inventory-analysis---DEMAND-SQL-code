@@ -2,22 +2,28 @@ SELECT
     -- Definicja typu źródła i typu zamówienia
     'Type Origin' = 'planned orders', 
     'Type' = 'consPlan', 
+
     -- Numer zamówienia i linii zamówienia
     ordPlan.t_orno AS 'order number', 
     ordPlan.t_pono AS 'order line', 
+
     -- Prawa część 8 znaków pola 't_plni' jako element
     RIGHT(ordPlan.[t_plni], 8) AS item, 
+
     -- Grupa elementów, zdefiniowana jako pierwszy znak pola 't_citg'
     'itemGroup' = LEFT(items.t_citg, 1), 
     -- Data i ilość zamówienia
     ordPlan.[t_date] AS 'date', 
     ordPlan.[t_qana] AS 'qty'
+
 FROM   
     -- Tabela planowanych zamówień
     erplndb.dbo.[tcprrp0101000] ordPlan 
+
 LEFT JOIN
     -- Tabela elementów
     erplndb.dbo.ttcibd0011000 items ON RIGHT(ordPlan.[t_plni], 8) = LTRIM(items.t_item)
+
 WHERE 
     -- Filtrowanie zamówień dla określonej lokalizacji, typu źródła i typu zamówienia
     ordPlan.[t_site] = '1010' 

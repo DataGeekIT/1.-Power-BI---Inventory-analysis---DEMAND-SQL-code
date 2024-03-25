@@ -26,6 +26,6 @@ LEFT JOIN
 
 WHERE 
     -- Filtrowanie zamówień dla określonej lokalizacji, typu źródła i typu zamówienia
-    ordPlan.[t_site] = '1010' 
-    AND ordPlan.t_kotr = '2' 
-    AND ordPlan.t_plnc = '001'
+    ordPlan.[t_companynumber] = 'xyz' 
+    AND ordPlan.t_abc = '1' 
+    AND ordPlan.t_zaq = '2'

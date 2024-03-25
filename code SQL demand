@@ -4,25 +4,25 @@ SELECT
     'Type' = 'consPlan', 
 
     -- Numer zamówienia i linii zamówienia
-    ordPlan.t_orno AS 'order number', 
-    ordPlan.t_pono AS 'order line', 
+    ordPlan.t_orderplan AS 'order number', 
+    ordPlan.t_orderline AS 'order line', 
 
-    -- Prawa część 8 znaków pola 't_plni' jako element
-    RIGHT(ordPlan.[t_plni], 8) AS item, 
+    -- Prawa część 8 znaków pola 't_plani' jako element
+    RIGHT(ordPlan.[t_plani], 8) AS item, 
 
     -- Grupa elementów, zdefiniowana jako pierwszy znak pola 't_citg'
     'itemGroup' = LEFT(items.t_citg, 1), 
     -- Data i ilość zamówienia
     ordPlan.[t_date] AS 'date', 
-    ordPlan.[t_qana] AS 'qty'
+    ordPlan.[t_qty] AS 'qty'
 
 FROM   
     -- Tabela planowanych zamówień
-    erplndb.dbo.[tcprrp0101000] ordPlan 
+    SQL.dbo.[tabela1] ordPlan 
 
 LEFT JOIN
     -- Tabela elementów
-    erplndb.dbo.ttcibd0011000 items ON RIGHT(ordPlan.[t_plni], 8) = LTRIM(items.t_item)
+    SQL.dbo.tabela2 items ON RIGHT(ordPlan.[t_plani], 8) = LTRIM(items.t_product)
 
 WHERE 
     -- Filtrowanie zamówień dla określonej lokalizacji, typu źródła i typu zamówienia

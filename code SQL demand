@@ -1,3 +1,5 @@
+Please note that the following information is purely fictional and does not contain any confidential data.
+
 SELECT 
     -- Definicja typu źródła i typu zamówienia
     'Type Origin' = 'planned orders', 
